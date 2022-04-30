@@ -14,6 +14,19 @@ class test_case1(unittest.TestCase):
         self.assertFalse(login(*util, "Ryan", None), "entered password grants access")
 
 
+
+class test_case2(unittest.TestCase):
+
+    def testSignUpSuccess(self):
+        self.assertTrue(signup(*util, "test", "test", "test"), "signup failure")
+
+    def testTakenUsername(self):
+        self.assertEqual("exception", signup(*util, "Ryan", "PW", "PW"), "the entered name is not in use")
+
+    def testConfirmFailure(self):
+        self.assertFalse(signup(*util, "test2", "test", "bro"))
+
+
 class test_case3(unittest.TestCase):
 
     def testDeposit50(self):
